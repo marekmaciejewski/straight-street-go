@@ -1,0 +1,203 @@
+openapi: 3.0.3
+info:
+  title: Car Rental API
+  version: 1.0.0
+  description: API for reserving cars from a limited fleet.
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: reservations
+paths:
+  /reservations:
+    post:
+      tags:
+        - reservations
+      operationId: createReservation
+      summary: Reserve an available car of the requested type.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReservationCreateRequest"
+      responses:
+        "201":
+          description: Created
+          headers:
+            Location:
+              description: Created reservation URI.
+              schema:
+                type: string
+                format: uri
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReservationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "409":
+          $ref: "#/components/responses/Conflict"
+  /reservations/{reservationId}:
+    get:
+      tags:
+        - reservations
+      operationId: getReservation
+      summary: Get a reservation by id.
+      parameters:
+        - name: reservationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReservationResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+components:
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetail"
+    NotFound:
+      description: Not Found
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetail"
+    Conflict:
+      description: Conflict
+      content:
+        application/problem+json:
+          schema:
+            $ref: "#/components/schemas/ProblemDetail"
+  schemas:
+    ProblemDetail:
+      description: Problem detail response.
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+        errors:
+          type: array
+          description: Field validation errors, present for validation failures.
+          items:
+            $ref: "#/components/schemas/ValidationError"
+      required:
+        - title
+        - status
+        - detail
+        - instance
+    ValidationError:
+      description: Field validation error.
+      type: object
+      properties:
+        field:
+          type: string
+          example: customerId
+        message:
+          type: string
+          example: must not be blank
+      required:
+        - field
+        - message
+    CarType:
+      description: Car category requested by the customer.
+      type: string
+      enum:
+        - SEDAN
+        - SUV
+        - VAN
+      example: SUV
+    ReservationCreateRequest:
+      description: Reservation creation command.
+      type: object
+      properties:
+        carType:
+          $ref: "#/components/schemas/CarType"
+        pickupDateTime:
+          type: string
+          format: date-time
+          description: Desired pickup timestamp.
+          example: "2026-09-01T10:00:00Z"
+        numberOfDays:
+          type: integer
+          format: int32
+          minimum: 1
+          description: Number of rental days.
+          example: 3
+        customerId:
+          type: string
+          minLength: 1
+          maxLength: 128
+          x-extra-annotation: '@jakarta.validation.constraints.NotBlank'
+          description: Customer identifier.
+          example: customer-123
+      required:
+        - carType
+        - pickupDateTime
+        - numberOfDays
+        - customerId
+    ReservationResponse:
+      description: Car reservation.
+      type: object
+      properties:
+        reservationId:
+          type: integer
+          format: int64
+          example: 101
+        carId:
+          type: integer
+          format: int64
+          example: 5
+        carType:
+          $ref: "#/components/schemas/CarType"
+        customerId:
+          type: string
+          example: customer-123
+        pickupDateTime:
+          type: string
+          format: date-time
+          example: "2026-09-01T10:00:00Z"
+        returnDateTime:
+          type: string
+          format: date-time
+          example: "2026-09-04T10:00:00Z"
+        availableAgainDateTime:
+          type: string
+          format: date-time
+          description: Timestamp when the car can be reserved again after the one-hour turnaround buffer.
+          example: "2026-09-04T11:00:00Z"
+        numberOfDays:
+          type: integer
+          format: int32
+          minimum: 1
+          example: 3
+      required:
+        - reservationId
+        - carId
+        - carType
+        - customerId
+        - pickupDateTime
+        - returnDateTime
+        - availableAgainDateTime
+        - numberOfDays
