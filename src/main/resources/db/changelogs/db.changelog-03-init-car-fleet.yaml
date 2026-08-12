@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 260811-03-init-car-fleet
+      author: Marek
+      changes:
+        - insert:
+            tableName: CAR
+            columns:
+              - column:
+                  name: ID
+                  valueNumeric: 1
+              - column:
+                  name: TYPE
+                  value: SEDAN
+        - insert:
+            tableName: CAR
+            columns:
+              - column:
+                  name: ID
+                  valueNumeric: 2
+              - column:
+                  name: TYPE
+                  value: SEDAN
+        - insert:
+            tableName: CAR
+            columns:
+              - column:
+                  name: ID
+                  valueNumeric: 3
+              - column:
+                  name: TYPE
+                  value: SUV
+        - insert:
+            tableName: CAR
+            columns:
+              - column:
+                  name: ID
+                  valueNumeric: 4
+              - column:
+                  name: TYPE
+                  value: SUV
+        - insert:
+            tableName: CAR
+            columns:
+              - column:
+                  name: ID
+                  valueNumeric: 5
+              - column:
+                  name: TYPE
+                  value: VAN

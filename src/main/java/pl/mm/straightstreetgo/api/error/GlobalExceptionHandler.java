@@ -15,7 +15,6 @@ import org.springframework.web.method.annotation.HandlerMethodValidationExceptio
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import pl.mm.straightstreetgo.api.dto.ValidationError;
 import pl.mm.straightstreetgo.domain.CarUnavailableException;
-import pl.mm.straightstreetgo.domain.InvalidReservationPeriodException;
 import pl.mm.straightstreetgo.domain.ReservationNotFoundException;
 
 import java.net.URI;
@@ -33,11 +32,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CarUnavailableException.class)
     public ResponseEntity<ProblemDetail> handleConflict(RuntimeException e, HttpServletRequest request) {
         return problem(HttpStatus.CONFLICT, e.getMessage(), request);
-    }
-
-    @ExceptionHandler(InvalidReservationPeriodException.class)
-    public ResponseEntity<ProblemDetail> handleBadRequest(RuntimeException e, HttpServletRequest request) {
-        return problem(HttpStatus.BAD_REQUEST, e.getMessage(), request);
     }
 
     @ExceptionHandler({

@@ -21,7 +21,7 @@ class ReservationApiValidationIT {
     private int port;
 
     @Test
-    void createReservation_returnsBadRequestForMissingAndInvalidFields() {
+    void createReservation_returnsBadRequest_forMissingAndInvalidFields() {
         request()
                 .contentType(ContentType.JSON)
                 .body("""
@@ -41,7 +41,7 @@ class ReservationApiValidationIT {
     }
 
     @Test
-    void createReservation_returnsBadRequestForTooLongCustomerId() {
+    void createReservation_returnsBadRequest_forTooLongCustomerId() {
         request()
                 .contentType(ContentType.JSON)
                 .body("""
@@ -63,7 +63,7 @@ class ReservationApiValidationIT {
     }
 
     @Test
-    void createReservation_returnsBadRequestForMalformedBody() {
+    void createReservation_returnsBadRequest_forMalformedBody() {
         request()
                 .contentType(ContentType.JSON)
                 .body("{")
@@ -77,7 +77,7 @@ class ReservationApiValidationIT {
     }
 
     @Test
-    void createReservation_returnsBadRequestForUnsupportedCarType() {
+    void createReservation_returnsBadRequest_forUnsupportedCarType() {
         request()
                 .contentType(ContentType.JSON)
                 .body("""
@@ -98,7 +98,7 @@ class ReservationApiValidationIT {
     }
 
     @Test
-    void createReservation_returnsBadRequestForInvalidPickupDateTime() {
+    void createReservation_returnsBadRequest_forInvalidPickupDateTime() {
         request()
                 .contentType(ContentType.JSON)
                 .body("""
@@ -119,7 +119,7 @@ class ReservationApiValidationIT {
     }
 
     @Test
-    void getReservation_returnsBadRequestForReservationIdBelowMinimum() {
+    void getReservation_returnsBadRequest_forReservationIdBelowMinimum() {
         request()
         .when()
                 .get("/reservations/{reservationId}", 0)
@@ -131,7 +131,7 @@ class ReservationApiValidationIT {
     }
 
     @Test
-    void getReservation_returnsBadRequestForInvalidReservationId() {
+    void getReservation_returnsBadRequest_forInvalidReservationId() {
         request()
         .when()
                 .get("/reservations/{reservationId}", "abc")

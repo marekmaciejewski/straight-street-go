@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.mm.straightstreetgo.domain.CarType;
+import pl.mm.straightstreetgo.api.dto.CarType;
 
 @Entity
 @Table(name = "CAR")
@@ -27,7 +27,4 @@ public class Car {
     @Enumerated(EnumType.STRING)
     @Column(name = "TYPE", nullable = false, length = 16)
     private CarType type;
-
-    @Column(name = "FLEET_NUMBER", nullable = false, length = 32, unique = true)
-    private String fleetNumber;
 }

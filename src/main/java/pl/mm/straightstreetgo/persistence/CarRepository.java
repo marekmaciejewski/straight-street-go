@@ -1,7 +1,7 @@
 package pl.mm.straightstreetgo.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.mm.straightstreetgo.domain.CarType;
+import pl.mm.straightstreetgo.api.dto.CarType;
 
 import java.util.List;
 

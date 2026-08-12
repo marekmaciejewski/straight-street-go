@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 260811-01-create-car
+      author: Marek
+      changes:
+        - createTable:
+            tableName: CAR
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: CAR_PK
+              - column:
+                  name: TYPE
+                  type: VARCHAR(16)
+                  constraints:
+                    nullable: false
+        - sql:
+            sql: ALTER TABLE CAR ADD CONSTRAINT CAR_TYPE_CHK CHECK (TYPE IN ('SEDAN', 'SUV', 'VAN'))

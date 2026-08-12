@@ -89,7 +89,7 @@ class ReservationScenarioIT {
 
     @Test
     void getReservation_returnsCreatedReservation() {
-        long reservationId = createReservation("SUV", "2026-09-05T09:15:00Z", 3, "customer-7", 3);
+        Object reservationId = createReservation("SUV", "2026-09-05T09:15:00Z", 3, "customer-7", 3);
 
         request()
         .when()
@@ -97,7 +97,7 @@ class ReservationScenarioIT {
         .then()
                 .statusCode(200)
                 .header("Content-Type", startsWith("application/json"))
-                .body("reservationId", equalTo((int) reservationId))
+                .body("reservationId", equalTo(reservationId))
                 .body("carId", equalTo(3))
                 .body("carType", equalTo("SUV"))
                 .body("customerId", equalTo("customer-7"))
@@ -119,13 +119,13 @@ class ReservationScenarioIT {
                 .body("instance", equalTo("/reservations/999"));
     }
 
-    private long createReservation(
+    private Object createReservation(
             String carType,
             String pickupDateTime,
             int numberOfDays,
             String customerId,
             int expectedCarId) {
-        Number reservationId = request()
+        return request()
                 .contentType(ContentType.JSON)
                 .body(reservationJson(carType, pickupDateTime, numberOfDays, customerId))
         .when()
@@ -135,7 +135,6 @@ class ReservationScenarioIT {
                 .body("carId", equalTo(expectedCarId))
                 .extract()
                 .path("reservationId");
-        return reservationId.longValue();
     }
 
     private static String reservationJson(
