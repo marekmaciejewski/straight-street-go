@@ -185,7 +185,7 @@ components:
         availableAgainDateTime:
           type: string
           format: date-time
-          description: Timestamp when the car can be reserved again after the one-hour turnaround buffer.
+          description: Timestamp when the car can be reserved again after the configured turnaround buffer.
           example: "2026-09-04T11:00:00Z"
         numberOfDays:
           type: integer
