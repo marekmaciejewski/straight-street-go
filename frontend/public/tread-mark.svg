@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 157.44 157.51" role="img" aria-labelledby="title">
+  <title>Straight Street Go tread mark</title>
+  <defs>
+    <path
+      id="upper-tread"
+      d="M75.04,18.39C99.72,9.83,125.79,.48,157.44,.48v21.89c-27.67,0-50.56,8.16-75.24,16.72C57.72,47.65,31.65,57,0,57v-21.89c27.67,0,50.56-8.16,75.04-16.72Z"
+    />
+    <path
+      id="middle-tread"
+      d="M75.04,70.39C99.72,61.83,125.79,52.48,157.44,52.48v21.89c-27.67,0-50.56,8.16-75.24,16.72C57.72,99.65,31.65,109,0,109V87.11c27.67,0,50.56-8.16,75.04-16.72Z"
+    />
+    <path
+      id="lower-tread"
+      d="M0,135.62c27.67,0,50.56-8.16,75.04-16.72,24.68-8.56,50.75-17.91,82.4-17.91v21.89c-27.67,0-50.56,8.16-75.24,16.72C57.72,148.16,31.65,157.51,0,157.51v-21.89Z"
+    />
+    <clipPath id="left-tread-blocks">
+      <rect x="0" y="0" width="67.77" height="157.51" />
+    </clipPath>
+    <clipPath id="right-tread-blocks">
+      <rect x="89.66" y="0" width="67.78" height="157.51" />
+    </clipPath>
+  </defs>
+  <g fill="#001aff">
+    <g clip-path="url(#left-tread-blocks)">
+      <use href="#upper-tread" transform="scale(0.5 1)" />
+      <use href="#middle-tread" transform="scale(0.5 1)" />
+      <use href="#lower-tread" transform="scale(0.5 1)" />
+    </g>
+    <rect x="67.77" y=".48" width="21.89" height="157.03" />
+    <g clip-path="url(#right-tread-blocks)">
+      <use href="#upper-tread" transform="translate(157.44 0) scale(-0.5 1)" />
+      <use href="#middle-tread" transform="translate(157.44 0) scale(-0.5 1)" />
+      <use href="#lower-tread" transform="translate(157.44 0) scale(-0.5 1)" />
+    </g>
+  </g>
+</svg>

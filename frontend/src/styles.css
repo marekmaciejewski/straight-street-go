@@ -1,0 +1,480 @@
+:root {
+  color-scheme: light;
+  --brand-blue: #001aff;
+  --brand-navy: #020b5b;
+  --utility-blue: #e7f5ff;
+  --surface: #ffffff;
+  --surface-soft: #f6fbff;
+  --ink: #10152c;
+  --muted: #5b6380;
+  --line: #d9e2ef;
+  --lime: #c9ee29;
+  --danger-soft: #fff5f5;
+  --body-font: Inter, Arial, "Helvetica Neue", sans-serif;
+  --display-font: LabAntiqua, "Libre Bodoni", "Bodoni 72", "Bodoni MT Condensed", "Bodoni MT", Didot, Georgia, "Times New Roman", serif;
+  --logo-font: Arial, "Helvetica Neue", sans-serif;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--body-font);
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: var(--surface);
+}
+
+.page-container {
+  max-width: 1160px;
+}
+
+.site-header {
+  background: var(--surface);
+  color: var(--brand-navy);
+}
+
+.utility-bar {
+  background: var(--utility-blue);
+}
+
+.utility-content,
+.brand-content,
+.section-nav-content,
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+.utility-content {
+  min-height: 54px;
+  gap: 1.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.375;
+}
+
+.utility-content a,
+.section-nav-link {
+  color: var(--brand-navy);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.utility-content a:hover {
+  color: var(--brand-blue);
+}
+
+.utility-spacer {
+  flex: 1 1 auto;
+}
+
+.brand-bar {
+  border-bottom: 1px solid #eef2f6;
+  background: var(--surface);
+}
+
+.brand-content {
+  min-height: 82px;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.58rem;
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+
+.brand-link:hover {
+  color: var(--brand-blue);
+}
+
+.brand-mark {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+}
+
+.brand-name {
+  display: block;
+  color: var(--brand-blue);
+  font-family: var(--logo-font);
+  font-size: 1.58rem;
+  font-stretch: condensed;
+  font-weight: 900;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.section-nav {
+  border-bottom: 1px solid #e6e9ef;
+  background: var(--surface);
+}
+
+.section-nav-content {
+  min-height: 68px;
+  gap: 1.8rem;
+  overflow-x: auto;
+}
+
+.section-nav-link {
+  flex: 0 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.section-nav-link.active {
+  color: var(--brand-blue);
+}
+
+.hero-stage {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  min-height: 560px;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.reservation-panel {
+  width: min(100%, 550px);
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 4px;
+  padding: 2rem;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 22px 60px rgb(2 11 91 / 16%);
+}
+
+.mode-tabs {
+  display: inline-flex;
+  gap: 0;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.mode-tab {
+  min-width: 6.5rem;
+  border: 0;
+  border-radius: 0;
+  padding: 0.65rem 1rem;
+  background: transparent;
+  color: var(--brand-navy);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mode-tab.active {
+  background: var(--brand-blue);
+  color: #fff;
+}
+
+.reservation-panel h1 {
+  max-width: 440px;
+  margin: 0 0 1rem;
+  color: var(--brand-blue);
+  font-family: var(--display-font);
+  font-size: 2.95rem;
+  font-stretch: condensed;
+  font-weight: 500;
+  line-height: 0.92;
+  transform: scaleX(0.86);
+  transform-origin: left center;
+}
+
+.panel-intro {
+  max-width: 470px;
+  margin: 0 0 1.4rem;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.status-alert {
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-size: 0.92rem;
+}
+
+.action-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.fleet-picker {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.fleet-picker legend,
+.form-label {
+  margin-bottom: 0.45rem;
+  color: var(--brand-navy);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.fleet-segments {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fleet-segment {
+  display: grid;
+  min-height: 68px;
+  gap: 0.15rem;
+  border: 0;
+  border-right: 1px solid var(--line);
+  padding: 0.75rem;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.fleet-segment:last-child {
+  border-right: 0;
+}
+
+.fleet-segment.active {
+  background: var(--surface-soft);
+  box-shadow: inset 0 -4px 0 var(--lime);
+  color: var(--brand-navy);
+}
+
+.fleet-segment-label {
+  color: var(--brand-blue);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8rem;
+  gap: 1rem;
+}
+
+.app-input {
+  min-height: 46px;
+  border-color: var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.app-input:focus {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 0.2rem rgb(0 26 255 / 16%);
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.primary-action {
+  min-width: 11rem;
+  min-height: 48px;
+  border-color: var(--brand-blue);
+  border-radius: 4px;
+  background: var(--brand-blue);
+  color: #fff;
+  font-weight: 600;
+}
+
+.primary-action:hover,
+.primary-action:focus {
+  border-color: var(--brand-navy);
+  background: var(--brand-navy);
+  color: #fff;
+}
+
+.primary-action:disabled {
+  border-color: #9ba8ff;
+  background: #9ba8ff;
+  color: var(--brand-navy);
+}
+
+.result-panel {
+  margin-top: 1.6rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+.result-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.result-heading h3 {
+  margin: 0;
+  color: var(--brand-navy);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.status-badge {
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  background: var(--lime);
+  color: var(--brand-navy);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.1rem;
+  margin: 0;
+}
+
+.detail-item {
+  min-width: 0;
+}
+
+.detail-item dt {
+  margin-bottom: 0.18rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.detail-item dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.api-footer {
+  border-top: 1px solid #e6e9ef;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.footer-content {
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  min-height: 58px;
+}
+
+.api-badge {
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  background: var(--brand-navy);
+  color: #fff;
+  font-weight: 800;
+}
+
+@media (max-width: 991.98px) {
+  .hero-stage,
+  .hero-content {
+    min-height: auto;
+  }
+
+  .hero-content {
+    align-items: flex-start;
+  }
+
+  .hero-image {
+    opacity: 0.42;
+  }
+
+  .reservation-panel {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .utility-content {
+    min-height: 46px;
+    gap: 1rem;
+    font-size: 0.88rem;
+  }
+
+  .brand-content {
+    min-height: 72px;
+  }
+
+  .brand-mark {
+    width: 2.65rem;
+    height: 2.65rem;
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .section-nav-content {
+    min-height: 52px;
+    gap: 1.2rem;
+  }
+
+  .section-nav-link {
+    font-size: 0.98rem;
+  }
+
+  .reservation-panel {
+    padding: 1.25rem;
+  }
+
+  .reservation-panel h1 {
+    font-size: 2.32rem;
+  }
+
+  .fleet-segments,
+  .form-grid,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fleet-segment {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .fleet-segment:last-child {
+    border-bottom: 0;
+  }
+
+  .primary-action {
+    width: 100%;
+  }
+}

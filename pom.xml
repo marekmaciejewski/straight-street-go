@@ -23,11 +23,11 @@
         <sonar.organization>marekmaciejewski</sonar.organization>
         <sonar.projectKey>marekmaciejewski_straight-street-go</sonar.projectKey>
         <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-        <sonar.sources>src/main/java,src/main/resources,Dockerfile,.github/workflows</sonar.sources>
+        <sonar.sources>src/main/java,src/main/resources,frontend/src,frontend/index.html,frontend/vite.config.ts,frontend/eslint.config.js,Dockerfile,.github/workflows</sonar.sources>
         <sonar.tests>src/test/java</sonar.tests>
         <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.exclusions>target/generated-sources/openapi/**</sonar.exclusions>
-        <sonar.coverage.exclusions>src/main/resources/**,src/main/java/pl/mm/straightstreetgo/StraightStreetGoApplication.java,target/generated-sources/openapi/**</sonar.coverage.exclusions>
+        <sonar.exclusions>target/generated-sources/openapi/**,frontend/src/generated/**,frontend/dist/**,frontend/node_modules/**</sonar.exclusions>
+        <sonar.coverage.exclusions>frontend/**,src/main/resources/**,src/main/java/pl/mm/straightstreetgo/StraightStreetGoApplication.java,target/generated-sources/openapi/**</sonar.coverage.exclusions>
     </properties>
     <dependencies>
         <dependency>
